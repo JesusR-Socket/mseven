@@ -20,7 +20,7 @@ function generateAddress(currency){
       ipn_url: "",
       label: ""
     };
-    Bot.sendMessage(_makePostRequest(methodUrl, data));
+    return makePostRequest(methodUrl, data);
 }
 
 function makePostRequest(methodUrl, data){
@@ -28,7 +28,7 @@ function makePostRequest(methodUrl, data){
     url: "https://api.westwallet.io/address/generate",
     success: '/trans',
     body: data,
-    headers: _makeHeaders(data)
+    headers: makeHeaders(data)
   })
     /*return axios({
       url: util.format('%s%s', this.baseUrl, methodUrl), 
@@ -62,5 +62,8 @@ function makeHeaders(data){
 publish({
   setPrivateKey: setPrivateKey,
   setPublicKey: setPublicKey,
-  setBBApiKey: setBBApiKey  // API key from Bots.Business
+  setBBApiKey: setBBApiKey,
+  generateAddress: generateAddress,
+  makeHeaders: makeHeaders,
+  makePostRequest: makePostRequest
 })
