@@ -23,5 +23,4 @@ let msg = "*Need pay:*\n `" + result.amount + "`" +
  // + "\n\nCheck status manually: /check" + options.payment_index;
 
 Bot.sendMessage(msg);
-Api.sendPhoto({ photo: result.qrcode_url }); 
-
+Api.sendPhoto({ photo: result.qrcode_url });
