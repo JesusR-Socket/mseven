@@ -1,5 +1,5 @@
 let libPrefix = "westwallet";
-let baseUrl="https://api.westwallet.io"
+let baseUrl="https://api.westwallet.io";
 
 function setPrivateKey(key){
   Bot.setProperty(libPrefix + "privatekey", key, "string");
@@ -14,8 +14,8 @@ function setBBApiKey(apiKey){
 }
 
 function generateAddress(currency){
-    const methodUrl = "/address/generate";
-    const data = {
+    var methodUrl = "/address/generate";
+    var data = {
       currency: currency,
       ipn_url: "",
       label: ""
@@ -23,7 +23,7 @@ function generateAddress(currency){
     Bot.sendMessage(_makePostRequest(methodUrl, data));
 }
 
-function _makePostRequest(methodUrl, data){
+function makePostRequest(methodUrl, data){
    HTTP.post( {
     url: "https://api.westwallet.io/address/generate",
     success: '/trans',
@@ -40,7 +40,7 @@ function _makePostRequest(methodUrl, data){
     });*/
 }
 
-function _makeHeaders(data){
+function makeHeaders(data){
     var timestamp = Math.floor(Date.now() / 1000);
     if (Object.keys(data).length === 0) {
       data = ""
