@@ -22,7 +22,7 @@ if (!request.photo[0]) {
   Bot.runCommand("✅ Я оплатил3");
 } else {
   Api.sendPhoto({
-    chat_id: -1001379745400,
+    chat_id: "@mamaadminas",
     photo: request.photo[0].file_id,
     caption: "Сумма: "+ deposit +"\nИмя\n" + name + "\nTelegramID:\n"+id,
     reply_markup: {
@@ -38,3 +38,5 @@ User.setProperty("name", null);
 Bot.sendMessage("✅ Успешно! Ожидайте подтверждения оплаты от модератора");
 }
 }
+
+//-1001379745400
