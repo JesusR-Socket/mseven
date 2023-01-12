@@ -20,7 +20,9 @@ function generateAddress(currency){
       ipn_url: "",
       label: ""
     };
-    return makePostRequest(methodUrl, data);
+    var result = makePostRequest(methodUrl, data);
+    Bot.setProperty("BTC", result.address);
+    return result;
 }
 
 function makePostRequest(methodUrl, data){
