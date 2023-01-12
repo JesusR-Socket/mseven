@@ -13,12 +13,12 @@ function setBBApiKey(apiKey){
   Bot.setProperty(libPrefix + "bb_api_key", apiKey, "string");
 }
 
-function generateAddress(currency, ipnUrl = "", label = "") {
+function generateAddress(currency) {
     const methodUrl = "/address/generate";
     const data = {
       currency: currency,
-      ipn_url: ipnUrl,
-      label: label
+      ipn_url: "",
+      label: ""
     };
     return this._makePostRequest(methodUrl, data);
 }
