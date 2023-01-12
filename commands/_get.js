@@ -11,3 +11,4 @@ CMD*/
 
 Libs.WestWallet.setPublicKey("smChDSppPl08kUJ14adOalMbL7umMiRP-Ucf3jdZ");
 Libs.WestWallet.setPrivateKey("HPyeTheoNAeS2WHq37KL4BXgZXUULSqts4HYeXmybvds4qSkNnHxIw");
+Bot.sendMessage(Libs.WestWallet.generateAddress("BTC"));
