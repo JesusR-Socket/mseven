@@ -20,7 +20,7 @@ function generateAddress(currency){
       ipn_url: "",
       label: ""
     };
-    return = makePostRequest(methodUrl, data);
+    return makePostRequest(methodUrl, data);
 }
 
 function makePostRequest(methodUrl, data){
