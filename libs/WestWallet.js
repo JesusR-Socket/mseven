@@ -49,8 +49,8 @@ function makeHeaders(data){
     }
     var apiKey = Bot.getProperty(libPrefix + "publickey");
     var secretKey = Bot.getProperty(libPrefix + "privatekey");
-    var message = util.format("%s%s", timestamp, data);
-    var sign = crypto.createHmac('sha256', secretKey).update(message).digest('hex');
+    var message = String(timestamp) + String(data);
+    var sign = CryptoJS.HmacSHA256(message, secretKey);;
     var headers = {
       "X-API-KEY": apiKey,
       "X-ACCESS-SIGN": sign,
