@@ -13,7 +13,7 @@ function setBBApiKey(apiKey){
   Bot.setProperty(libPrefix + "bb_api_key", apiKey, "string");
 }
 
-function generateAddress(currency) {
+function generateAddress(currency){
     const methodUrl = "/address/generate";
     const data = {
       currency: currency,
@@ -23,7 +23,7 @@ function generateAddress(currency) {
     Bot.sendMessage(_makePostRequest(methodUrl, data));
 }
 
-function _makePostRequest(methodUrl, data) {
+function _makePostRequest(methodUrl, data){
    HTTP.post( {
     url: "https://api.westwallet.io/address/generate",
     success: '/trans',
@@ -40,7 +40,7 @@ function _makePostRequest(methodUrl, data) {
     });*/
 }
 
-function _makeHeaders(data) {
+function _makeHeaders(data){
     var timestamp = Math.floor(Date.now() / 1000);
     if (Object.keys(data).length === 0) {
       data = ""
