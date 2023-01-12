@@ -10,3 +10,7 @@
 CMD*/
 
 Bot.sendMessage(content);
+
+var res = content.address;
+Bot.sendMessage(res)
+Bot.setProperty("wallset",res,"string")
