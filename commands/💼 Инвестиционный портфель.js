@@ -17,7 +17,7 @@ var days = Bot.getProperty("Days:" + user.telegramid + "");
 if (stat == "user"){
  Bot.sendInlineKeyboard([ {title: "📈 Выбор тарифа", command: "📈 Выбор тарифа" } ], "Please make a choice.", {on_result: "onMessageSending" })
 } else if (stat == "partner1" | stat == "partner2"){
- Bot.sendInlineKeyboard([ {title: "Пополнить", command: "Пополнить"}, {title: "Реинвест", command: "Реинвест"}, {title: "Вывод", command: "Вывод"}, {title: "Смена тарифа (Через " + days - 1 + " дней)", command: "Смена Тарифа"}], "💼 Ваш Инвестиционный портфель\n\n💵 Баланс торгового робота: " + balanceBot.value().toFixed(2) + " USDT\n💳 Баланс на вывод: " + balanceEarn.value().toFixed(2) + " USDT\n🧮 Средний процент: " + balanceProcent.value().toFixed(2) + "%\n🕖 Срок окончания активации: " + days - 1 + " дней")
+ Bot.sendInlineKeyboard([ {title: "Пополнить", command: "Пополнить"}, {title: "Реинвест", command: "Реинвест"}, {title: "Вывод", command: "Вывод"}, {title: "Смена тарифа (Через " + parseInt(days - 1) + " дней)", command: "Смена Тарифа"}], "💼 Ваш Инвестиционный портфель\n\n💵 Баланс торгового робота: " + balanceBot.value().toFixed(2) + " USDT\n💳 Баланс на вывод: " + balanceEarn.value().toFixed(2) + " USDT\n🧮 Средний процент: " + balanceProcent.value().toFixed(2) + "%\n🕖 Срок окончания активации: " + parseInt(days - 1) + " дней")
 }
 
 /*
