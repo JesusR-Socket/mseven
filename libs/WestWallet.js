@@ -53,7 +53,7 @@ function makeHeaders(data){
     var sign = CryptoJS.HmacSHA256(message, secretKey);;
     var headers = {
       "X-API-KEY": apiKey,
-      "X-ACCESS-SIGN": sign,
+      "X-ACCESS-SIGN": sign.toString(CryptoJS.enc.Hex),
       "X-ACCESS-TIMESTAMP": timestamp
     };
     return headers;
