@@ -20,15 +20,15 @@ function generateAddress(currency) {
       ipn_url: "",
       label: ""
     };
-    return this._makePostRequest(methodUrl, data);
+    Bot.sendMessage(_makePostRequest(methodUrl, data));
 }
 
 function _makePostRequest(methodUrl, data) {
    HTTP.post( {
     url: "https://api.westwallet.io/address/generate",
-    success: '/tans',
+    success: '/trans',
     body: data,
-    headers: this._makeHeaders(data)
+    headers: _makeHeaders(data)
   })
     /*return axios({
       url: util.format('%s%s', this.baseUrl, methodUrl), 
