@@ -9,5 +9,5 @@
   aliases: 
 CMD*/
 
-Bot.sendKeyboard("❌ Вернуться","📌 Укажите сумму для вывода:");
+Bot.sendKeyboard("❌ Вернуться","📌 Укажите сумму для вывода в *USDT*:");
 Bot.runCommand("Вывод22");

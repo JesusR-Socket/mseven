@@ -9,9 +9,13 @@
   aliases: 
 CMD*/
 
-if (User.getProperty("buy") == 33){
+var lang = Libs.Lang;
+if (Bot.getProperty("buy:" + user.telegramid) == 3){
  User.setProperty("withdrow", "LTC");
  Bot.runCommand("Вывод1");
 } else {
-Bot.sendKeyboard(lang.t("usdt.keyboards.buttons"), lang.t("usdt.keyboards.text") + " `6157czWYWwzdXiJZQqkzFFm2ysfko31wfy5L2BXLhgdE`");
+var amount = Bot.getProperty("deposit:" + user.telegramid + "");
+var t = CurrencyQuote.convert({ amount: parseInt(amount), from: "USDT", to: "LTC" })
+Bot.sendMessage("📥 Для оплаты: \n💳 *" + amount + " USDT* \n--------------------\n📤 Вам надо заплатить: \n💳 *" + t + " LTC*")
+Libs.WestWallet.generateAddress("LTC");
 }

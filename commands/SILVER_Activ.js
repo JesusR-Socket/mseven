@@ -10,7 +10,7 @@
 CMD*/
 
 let id = Bot.getProperty("MSG:" + user.telegramid)
-Bot.editMessage("Ваш пакет успешно активирован!", id)
+Bot.editMessage("✅ Ваш пакет успешно активирован!\n*⚠️ До пополнения баланса Вы можете сменить свой тариф*", id)
 Bot.setProperty("Days:" + user.telegramid + "", 15)
 Bot.setProperty("" + user.telegramid + "", "partner1")
 

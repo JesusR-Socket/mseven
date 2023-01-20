@@ -4,7 +4,7 @@
   need_reply: true
   auto_retry_time: 
   folder: 
-  answer: Серега, прикрепи скриншот:
+  answer: 📌 Прикрепи скриншот:
   keyboard: 
   aliases: 
 CMD*/
@@ -17,7 +17,7 @@ var payid = Bot.getProperty("payid:");
   Api.sendPhoto({
     chat_id: payid,
     photo: request.photo[0].file_id,
-    caption: "✅ Вывод средств успешно выполнен"
+    caption: "✅ Ваш вывод средств успешно выполнен"
   })
 Bot.setProperty("payid:", null);
 }

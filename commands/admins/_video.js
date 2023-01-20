@@ -9,4 +9,4 @@
   aliases: 
 CMD*/
 
-Bot.setProperty({name: "video3", value: request.video.file_id})
+Bot.setProperty({name: "video1", value: request.video.file_id})

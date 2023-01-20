@@ -10,15 +10,15 @@
 CMD*/
 
 if (Bot.getProperty("buy:" + user.telegramid) == 3) {
-  Bot.sendKeyboard("USDT TRC20,USDT BEP20,\nUSDT ERC20,USDT SOL,\n❌ Вернуться","⭕️ Выберите в чём выводить:")
+  Bot.sendKeyboard("USDT,BTC,ETH\nBNB,LTC,BUSDT,\n❌ Вернуться","⭕️ Выберите в чём выводить:")
 } else {
   var tx;
   Bot.sendKeyboard(
-    "USDT TRC20,USDT BEP20,\nUSDT ERC20,USDT SOL,\n❌ Вернуться",
+    "USDT,BTC,ETH\nBNB,LTC,BUSDT,\n❌ Вернуться",
     "⭕️ Выберите способ пополнения:"
   )
   Api.sendMessage({
-   text: "⚠️ <i>Если Вам не подходят данные способы оплаты, то обратитесь в тех. поддержку:</i> @",
+   text: "⚠️ <i>Если Вам не подходят данные способы оплаты, то обратитесь в тех. поддержку.</i>",
    parse_mode: "HTML"
   })
 }

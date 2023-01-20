@@ -9,4 +9,4 @@
   aliases: 
 CMD*/
 
-Bot.editInlineKeyboard([ {title: "Активировать", command: "SILVER_Activ" } ])
+Bot.editInlineKeyboard([ {title: "🔰 Активировать", command: "SILVER_Activ" } ])
