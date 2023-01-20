@@ -1,15 +1,18 @@
 /*CMD
   command: Сделать VIP
   help: 
-  need_reply: true
+  need_reply: false
   auto_retry_time: 
   folder: 
-  answer: TelegramID:
+
+  <<ANSWER
+
+  ANSWER
   keyboard: 
   aliases: 
 CMD*/
 
-var id = parseInt(message);
+/*var id = parseInt(message);
 var stat = Bot.getProperty("" + id + "");
 
 if (stat == "partner1"){
@@ -20,4 +23,5 @@ if (stat == "partner1"){
  Bot.sendMessageToChatWithId(id, "💠 Вам присвоен статус *VIP* 💠")
 } else {
  Bot.sendMessage("❌ Неверный TelegramID, либо данный человек не имеет активной подписки.")
-}
+}*/
+Bot.sendKeyboard("40%, 50%, 60%,\n❌ Вернуться", "Выбери процент:")

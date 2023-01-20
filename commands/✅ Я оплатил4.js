@@ -27,15 +27,16 @@ if (!request.photo[0]) {
     caption: "Сумма: "+ deposit +"\nИмя\n" + name + "\nTelegramID:\n"+id,
     reply_markup: {
     inline_keyboard: [
-   [ {text: "Одобрить", callback_data: "/proof"}],
-   [ {text: "Отклонить", callback_data: "/unproof"}]
+   [ {text: "Одобрить", callback_data: "/proof"}, {text: "Отклонить", callback_data: "/unproof"}],
+   [ {text: "Связаться", callback_data: "contact"}, {text: "Одобрить с суммой", callback_data: "proofSum"}]
   ],
  }
   })
-  Bot.runCommand("main_menu");
 User.setProperty("name", null);
+User.setProperty("Address", null);
 
 Bot.sendMessage("✅ Успешно! Ожидайте подтверждения оплаты от модератора");
+Bot.runCommand("main_menu");
 }
 }
 

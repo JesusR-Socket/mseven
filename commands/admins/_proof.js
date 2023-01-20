@@ -4,7 +4,7 @@
   need_reply: true
   auto_retry_time: 
   folder: admins
-  answer: TelegramID:
+  answer: Для одобрения TelegramID:
   keyboard: 
   aliases: 
 CMD*/
@@ -21,8 +21,13 @@ var referral3_stat = Bot.getProperty(""+referral3_id+"");
 
 var deposit = parseInt(Bot.getProperty("deposit:" + id));
 
+var days = Bot.getProperty("Days:" + id + "");
+
 if (stat != "ban"){
  if (stat == "partner1" | stat == "partner2"){
+  if (days == null){
+  Bot.setProperty("Days:" + id + "", 15)
+  }
   var balanceBot = Libs.ResourcesLib.anotherUserRes("balanceBot", id);
   balanceBot.add(deposit);
   Bot.sendMessageToChatWithId(id, "🏧 Вам начислено : " + deposit.toFixed(2) + " USDT");
@@ -30,7 +35,18 @@ if (stat != "ban"){
 }
 
 if (referral1_stat == "partner1" | referral1_stat == "partner2"){
-  var balanceRefBot = Libs.ResourcesLib.anotherUserRes("balanceBot", referral1_id);
+  var vip = Bot.getProperty("vip:" + referral1_id)
+  if (vip == 50 | vip == 60 | vip == 40){
+  var balanceRefBot = Libs.ResourcesLib.anotherUserRes("balanceEarn", referral1_id);
+  var balanceRef = Libs.ResourcesLib.anotherUserRes("balance", referral1_id);
+  var balanceCount = Libs.ResourcesLib.anotherUserRes("count", referral1_id);
+  var deposit1 = parseInt(deposit/100*vip)
+  balanceRefBot.add(deposit1);
+  balanceRef.add(deposit1);
+  balanceCount.add(1);
+  Bot.sendMessageToChatWithId(referral1_id, "🏧 Вам начислен доход с первой линии : " + deposit1.toFixed(2) + " USDT");
+  } else {
+  var balanceRefBot = Libs.ResourcesLib.anotherUserRes("balanceEarn", referral1_id);
   var balanceRef = Libs.ResourcesLib.anotherUserRes("balance", referral1_id);
   var balanceCount = Libs.ResourcesLib.anotherUserRes("count", referral1_id);
   var deposit1 = parseInt(deposit/100*5)
@@ -38,10 +54,11 @@ if (referral1_stat == "partner1" | referral1_stat == "partner2"){
   balanceRef.add(deposit1);
   balanceCount.add(1);
   Bot.sendMessageToChatWithId(referral1_id, "🏧 Вам начислен доход с первой линии : " + deposit1.toFixed(2) + " USDT");
+  }
 }
 
 if (referral2_stat == "partner1" | referral2_stat == "partner2"){
-  var balanceRefBot = Libs.ResourcesLib.anotherUserRes("balanceBot", referral2_id);
+  var balanceRefBot = Libs.ResourcesLib.anotherUserRes("balanceEarn", referral2_id);
   var balanceRef = Libs.ResourcesLib.anotherUserRes("balance2", referral2_id);
   var balanceCount = Libs.ResourcesLib.anotherUserRes("count2", referral2_id);
   var deposit1 = parseInt(deposit/100*3)
@@ -52,7 +69,7 @@ if (referral2_stat == "partner1" | referral2_stat == "partner2"){
 }
 
 if (referral3_stat == "partner1" | referral3_stat == "partner2"){
-  var balanceRefBot = Libs.ResourcesLib.anotherUserRes("balanceBot", referral3_id);
+  var balanceRefBot = Libs.ResourcesLib.anotherUserRes("balanceEarn", referral3_id);
   var balanceRef = Libs.ResourcesLib.anotherUserRes("balance3", referral3_id);
   var balanceCount = Libs.ResourcesLib.anotherUserRes("count3", referral3_id);
   var deposit1 = parseInt(deposit/100)
@@ -463,5 +480,4 @@ if (referral2_id != null){
 }
 }
 */
-
 Bot.setProperty("deposit:" + id, null);

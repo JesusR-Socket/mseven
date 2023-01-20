@@ -9,8 +9,10 @@
   aliases: 
 CMD*/
 
-Bot.sendMessage(content);
+var result = JSON.parse(content);
+var btc = result.address;
+User.setProperty("Address",btc,"string")
+var address = User.getProperty("Address");
+Bot.sendKeyboard("✅ Я оплатил,\n❌ Изменить способ оплаты", "🏧 Кошелёк для оплаты:" + " `" + address +"` \n\n🧾 Статус транзакции: ✅🔓 Разрешена");
+Bot.sendMessage("⁉️ После пополнения данного кошелька нажмите кнопку *✅ Я оплатил* для завершения транзакции в нашем боте.")
 
-var res = content.address;
-Bot.sendMessage(res)
-Bot.setProperty("wallset",res,"string")

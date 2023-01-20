@@ -12,15 +12,15 @@ CMD*/
 var users = Bot.getProperty("Silver");
 var procent = (Math.random() * (1.0 - 0.5) + 0.5).toFixed(2);
 
-Bot.sendMessage(procent)
 for(var i in users){
 var days = Bot.getProperty("Days:" + users[i] + "");
 if (days == 1){
- var stat = Bot.getProperty("" + users[i] + "");
- if (stat == "partner1" | stat == "partner2"){
  Bot.setProperty("Days:" + users[i] + "", days - 1);
- Bot.sendMessageToChatWithId(users[i], "⛔️ Срок тарифа закончился ⛔️");
-} 
+ var balanceBot = Libs.ResourcesLib.anotherUserRes("balanceBot", users[i]);
+ var balanceEarn = Libs.ResourcesLib.anotherUserRes("balanceEarn", users[i]);
+ balanceEarn.add(parseFloat(balanceBot.value()))
+ balanceBot.set(0);
+ Bot.sendMessageToChatWithId(users[i], "⛔️ Срок тарифа закончился ⛔️"); 
 } else {
 var balanceBot = Libs.ResourcesLib.anotherUserRes("balanceBot", users[i]);
 if (balanceBot.value().toFixed(0) >= 50)
@@ -38,6 +38,14 @@ else{
 }
 Bot.setProperty("Days:" + users[i] + "", days - 1);
 Bot.sendMessageToChatWithId(users[i], "🏧 С Вашего баланса: *" + balanceBot.value().toFixed(2) + " USDT* начислен процент *+" + procent + "%*");
+if (days == 1){
+ Bot.setProperty("Days:" + users[i] + "", days - 1);
+ var balanceBot = Libs.ResourcesLib.anotherUserRes("balanceBot", users[i]);
+ var balanceEarn = Libs.ResourcesLib.anotherUserRes("balanceEarn", users[i]);
+ balanceEarn.add(parseFloat(balanceBot.value()))
+ balanceBot.set(0);
+ Bot.sendMessageToChatWithId(users[i], "⛔️ Срок тарифа закончился ⛔️"); 
+}
 }
 }
 }

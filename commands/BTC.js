@@ -10,9 +10,12 @@
 CMD*/
 
 var lang = Libs.Lang;
-if (User.getProperty("buy") == 33){
+if (Bot.getProperty("buy:" + user.telegramid) == 3){
  User.setProperty("withdrow", "BTC");
  Bot.runCommand("Вывод1");
 } else {
-Bot.sendKeyboard(lang.t("usdt.keyboards.buttons"), lang.t("usdt.keyboards.text") + " `3J1A4e5E33BkhiRRb2miA8cCdQLj4yFxCu`");
+var amount = Bot.getProperty("deposit:" + user.telegramid + "");
+var t = CurrencyQuote.convert({ amount: parseInt(amount), from: "USDT", to: "BTC" })
+Bot.sendMessage("📥 Для оплаты: \n💳 *" + amount + " USDT* \n--------------------\n📤 Вам надо заплатить: \n💳 *" + t + " BTC*")
+Libs.WestWallet.generateAddress("BTC");
 }

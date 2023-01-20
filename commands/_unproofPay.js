@@ -10,4 +10,4 @@
 CMD*/
 
 var id = parseInt(message);
-Bot.sendMessageToChatWithId(id, "❌ Вывод был отклонён. Обратитесь в тех. поддержку @teh_podderzka")
+Bot.sendMessageToChatWithId(id, "❌ Вывод был отклонён. Обратитесь в тех. поддержку.")

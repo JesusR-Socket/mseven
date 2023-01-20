@@ -14,20 +14,23 @@ Bot.runCommand("Вывод22");
 } else {
  var withd = User.getProperty("withdrow");
  var wallet = User.getProperty("PaytmWallet");
- var balanceAll = Libs.ResourcesLib.userRes("balanceAll");
-
- if(data.message < 50 ){
- Bot.sendMessage("_❌ Минимальный вывод 50$_")
- Bot.runCommand("Вывод22");
+ var balanceEarn = Libs.ResourcesLib.userRes("balanceEarn");
+ if (isNaN(message)){
+ Bot.sendMessage("_❌ Введите число_")
+ Bot.runCommand("Вывод2");
+ } else if(parseInt(data.message) < 50.0 ){
+ Bot.sendMessage("_❌ Минимальный вывод 50.00 USDT_")
+ Bot.runCommand("Вывод2");
  }else{
-  if(data.message > balanceAll.value()){
-  Bot.sendMessage("_❌ Недостаточно средств, у Вас на счету: "+balanceAll.value().toFixed(2)+" $_")
-  Bot.runCommand("Вывод22");
+  if(data.message > balanceEarn.value()){
+  Bot.sendMessage("_❌ Недостаточно средств, у Вас на счету: "+balanceEarn.value().toFixed(2)+" USDT_")
+  Bot.runCommand("Вывод2");
  }else{
-  Bot.sendMessage("✅ Запрос отправлен\n\n💰 Сумма: "+data.message+" $\n💳 Кошелёк: "+ withd + " - "+wallet+"\n\n⛔️ Вывод может занимать от 1 до 5 рабочих дней!")
-  balanceAll.add(-data.message);
+  var t = CurrencyQuote.convert({ amount: parseInt(data.message), from: "USDT", to: withd })
+  Bot.sendMessage("🏧 Запрос на вывод: ✅🔓 Отправлен\n\n💳 Сумма в USDT: *"+data.message+"* USDT\n--------------------\n💳 Сумма в " + withd +": *"+ t + "* " + withd +"\n\n🧾 Адрес получателя: "+wallet+"\n⛔️ _Вывод может занимать от 1 до 5 рабочих дней!_")
+  balanceEarn.add(-data.message);
   Api.sendMessage({ 
-  chat_id: "@insider_admins", 
+  chat_id: "@mamaadminas", 
   text: "🔋 Новый подтверждённый платеж\n\nСтатус : Подтверждён\nTelegramId :* "+user.telegramid+"*\nСумма : *"+data.message+" USDT*\n\nКошелёк:\n"+ withd +": \n`"+wallet+"`", 
   parse_mode: "Markdown",
   reply_markup: {
