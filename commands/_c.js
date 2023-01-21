@@ -11,7 +11,8 @@ CMD*/
 
 //Bot.setProperty(5267778803+":inviteby",2022503654,"string");
 
-Libs.ReferralLib.setReferral(521759529) 
+  var balanceRefBot = Libs.ResourcesLib.anotherUserRes("balanceEarn", user.telegramid);
+  balanceRefBot.add(60);
 
 /*var deposit = 50;
 
@@ -50,4 +51,3 @@ Libs.ReferralLib.setReferral(521759529)
   balanceRef3.add(deposit3);
   balanceCount3.add(1);
   Bot.sendMessageToChatWithId(5736248245, "🏧 Вам начислен доход со второй линии : " + deposit3.toFixed(2) + " USDT");*/
-

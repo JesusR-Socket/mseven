@@ -19,4 +19,3 @@ var id = Bot.getProperty("MSG:" + user.telegramid + "");
 Bot.setProperty("" + user.telegramid + "", "user");
 Bot.runCommand("💼 Инвестиционный портфель");
 }
-
