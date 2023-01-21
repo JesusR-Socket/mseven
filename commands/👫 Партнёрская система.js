@@ -20,6 +20,7 @@ var balanceCount = Libs.ResourcesLib.userRes("count");
 var balanceCount2 = Libs.ResourcesLib.userRes("count2");
 var balanceCount3 = Libs.ResourcesLib.userRes("count3");
 let reflink = Libs.ReferralLib.currentUser.getRefLink("MoneySeven_bot", "Bot");
+//let reflink = Libs.ReferralLib.currentUser.getRefLink("m7test_bot", "Bot");
 var ref = Libs.ReferralLib.getAttractedBy();
 var id1 = Bot.getProperty(user.telegramid + ":inviteby");
 if (ref == null){

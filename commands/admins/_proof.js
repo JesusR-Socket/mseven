@@ -14,20 +14,17 @@ var referral1_id = Bot.getProperty(id+":inviteby");
 var referral2_id = Bot.getProperty(referral1_id+":inviteby");
 var referral3_id = Bot.getProperty(referral2_id+":inviteby");
 
-let stat = Bot.getProperty(""+id+"");
+var stat = Bot.getProperty(""+id+"");
 var referral1_stat = Bot.getProperty(""+referral1_id+"");
 var referral2_stat = Bot.getProperty(""+referral2_id+"");
 var referral3_stat = Bot.getProperty(""+referral3_id+"");
 
 var deposit = parseInt(Bot.getProperty("deposit:" + id));
 
-var days = Bot.getProperty("Days:" + id + "");
+var old = Bot.getProperty("old:" + id);
 
 if (stat != "ban"){
  if (stat == "partner1" | stat == "partner2"){
-  if (days == null){
-  Bot.setProperty("Days:" + id + "", 15)
-  }
   var balanceBot = Libs.ResourcesLib.anotherUserRes("balanceBot", id);
   balanceBot.add(deposit);
   Bot.sendMessageToChatWithId(id, "🏧 Вам начислено : " + deposit.toFixed(2) + " USDT");
@@ -43,7 +40,9 @@ if (referral1_stat == "partner1" | referral1_stat == "partner2"){
   var deposit1 = parseInt(deposit/100*vip)
   balanceRefBot.add(deposit1);
   balanceRef.add(deposit1);
+  if (old == null | old == false){
   balanceCount.add(1);
+  }
   Bot.sendMessageToChatWithId(referral1_id, "🏧 Вам начислен доход с первой линии : " + deposit1.toFixed(2) + " USDT");
   } else {
   var balanceRefBot = Libs.ResourcesLib.anotherUserRes("balanceEarn", referral1_id);
@@ -52,7 +51,9 @@ if (referral1_stat == "partner1" | referral1_stat == "partner2"){
   var deposit1 = parseInt(deposit/100*5)
   balanceRefBot.add(deposit1);
   balanceRef.add(deposit1);
+  if (old == null | old == false){
   balanceCount.add(1);
+  }
   Bot.sendMessageToChatWithId(referral1_id, "🏧 Вам начислен доход с первой линии : " + deposit1.toFixed(2) + " USDT");
   }
 }
@@ -64,7 +65,9 @@ if (referral2_stat == "partner1" | referral2_stat == "partner2"){
   var deposit1 = parseInt(deposit/100*3)
   balanceRefBot.add(deposit1);
   balanceRef.add(deposit1);
+  if (old == null | old == false){
   balanceCount.add(1);
+  }
   Bot.sendMessageToChatWithId(referral2_id, "🏧 Вам начислен доход со второй линии : " + deposit1.toFixed(2) + " USDT");
 }
 
@@ -75,7 +78,9 @@ if (referral3_stat == "partner1" | referral3_stat == "partner2"){
   var deposit1 = parseInt(deposit/100)
   balanceRefBot.add(deposit1);
   balanceRef.add(deposit1);
+  if (old == null | old == false){
   balanceCount.add(1);
+  }
   Bot.sendMessageToChatWithId(referral3_id, "🏧 Вам начислен доход со второй линии : " + deposit1.toFixed(2) + " USDT");
 }
 /*if (stat != "ban"){
@@ -480,4 +485,8 @@ if (referral2_id != null){
 }
 }
 */
+if (old == null | old == false){
+Bot.setProperty("old:" + id, true)
+}
+
 Bot.setProperty("deposit:" + id, null);

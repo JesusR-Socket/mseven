@@ -14,14 +14,6 @@ var procent = (Math.random() * (1.7 - 1.0) + 1.0).toFixed(2);
 
 for(var i in users){
 var days = Bot.getProperty("Days:" + users[i] + "");
-if (days == 1){
- Bot.setProperty("Days:" + users[i] + "", days - 1);
- var balanceBot = Libs.ResourcesLib.anotherUserRes("balanceBot", users[i]);
- var balanceEarn = Libs.ResourcesLib.anotherUserRes("balanceEarn", users[i]);
- balanceEarn.add(parseFloat(balanceBot.value()))
- balanceBot.set(0);
- Bot.sendMessageToChatWithId(users[i], "⛔️ Срок тарифа закончился ⛔️"); 
-} else {
 var balanceBot = Libs.ResourcesLib.anotherUserRes("balanceBot", users[i]);
 if (balanceBot.value().toFixed(0) >= 500)
 {
@@ -37,6 +29,7 @@ else{
  balanceProcent.set(parseFloat(balance/2))
 }
 Bot.setProperty("Days:" + users[i] + "", days - 1);
+days--;
 Bot.sendMessageToChatWithId(users[i], "🏧 С Вашего баланса: *" + balanceBot.value().toFixed(2) + " USDT* начислен процент *+" + procent + "%*");
 if (days == 1){
  Bot.setProperty("Days:" + users[i] + "", days - 1);
@@ -45,7 +38,6 @@ if (days == 1){
  balanceEarn.add(parseFloat(balanceBot.value()))
  balanceBot.set(0);
  Bot.sendMessageToChatWithId(users[i], "⛔️ Срок тарифа закончился ⛔️"); 
-}
 }
 }
 }

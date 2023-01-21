@@ -37,6 +37,7 @@ else{
  balanceProcent.set(parseFloat(balance/2))
 }
 Bot.setProperty("Days:" + users[i] + "", days - 1);
+days--;
 Bot.sendMessageToChatWithId(users[i], "🏧 С Вашего баланса: *" + balanceBot.value().toFixed(2) + " USDT* начислен процент *+" + procent + "%*");
 if (days == 1){
  Bot.setProperty("Days:" + users[i] + "", days - 1);
